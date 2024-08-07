@@ -5,7 +5,7 @@ const userRoutes = Router();
 
 const userController = new UserController()
 
-userRoutes.get('/user/login', userController.login)
-userRoutes.get('/user/register', userController.register)
+userRoutes.post('/user/login', userController.login)
+userRoutes.post('/user/register', userController.register)
 
 export { userRoutes }

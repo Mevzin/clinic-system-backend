@@ -13,7 +13,7 @@ export class UserController {
             const hashedPassword = await hash(password, salt)
             const newUser = new User({ name, email, password: hashedPassword });
             await newUser.save();
-            return res.status(201).json(newUser);
+            return res.status(201).json({ message: "Usuario cadastrado com sucesso!" });
         } catch (error: any) {
             console.error(error.message);
             return res.status(500).json({ message: "Internal server error!" })
