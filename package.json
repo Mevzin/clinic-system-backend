@@ -1,0 +1,31 @@
+{
+  "name": "clinic-system-backend",
+  "version": "1.0.0",
+  "description": "API for clinic system",
+  "main": "src/server.ts",
+  "author": "Thiago Torres",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec ts-node ./src/server.ts",
+    "build": "tsc",
+    "vercel-build": "echo hello"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.4",
+    "eslint": "^8.57.0",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.4"
+  }
+}
