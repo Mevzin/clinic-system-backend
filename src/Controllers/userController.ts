@@ -31,20 +31,19 @@ export class UserController {
             const match = await bcrypt.compare(password, user.password)
             if (!match) return res.status(404).json({ message: "Invalid password!" })
 
-            const token = sign({}, String(process.env.PRIVATE_KEY_JWT), {
-                subject: user.id,
+            const token = sign({
+                user: user._id,
+            }, String(process.env.PRIVATE_KEY_JWT), {
                 expiresIn: "1d"
             });
 
-            const tokenReturn = {
+            return res.status(200).json({
                 token,
                 user: {
                     name: user.name,
                     email: user.email
                 }
-            };
-
-            return res.status(200).json({ message: tokenReturn })
+            })
         } catch (error: any) {
             console.error(error.message);
             return res.status(500).json({ message: "Internal server error!" })
