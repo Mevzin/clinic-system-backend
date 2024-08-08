@@ -22,6 +22,5 @@ export class PatientController {
             console.error(error.message);
             return res.status(500).json({ message: "Internal server error!" })
         }
-        res.status(200).json({ message: "deu boa" })
     }
 }
