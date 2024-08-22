@@ -17,6 +17,7 @@ const PatientSchema: Schema = new Schema(
         age: { type: Number, required: true },
         anamnesisId: { type: String, default: "" },
         active: { type: Boolean, default: true },
+        doctorId: { type: Schema.Types.ObjectId, required: true }
     },
     {
         timestamps: true,
