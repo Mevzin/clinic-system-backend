@@ -49,4 +49,29 @@ export class PatientController {
             return res.status(500).json({ message: "Internal server error!" })
         }
     }
+
+    async updatePatient(req: Request, res: Response) {
+        const { patientId } = req.params;
+        const { name, email, age, anamnesisId, active } = req.body;
+
+        if (patientId.length > 24 || patientId.length < 24) return res.status(404).json({ message: "Invalid patient ID!" })
+
+        try {
+            const patient = await Patient.findOne({ _id: patientId })
+            if (!patient) return res.status(404).json({ message: "Patient not found!" })
+
+            patient.name = name || patient.name
+            patient.email = email || patient.email
+            patient.age = age || patient.age
+            patient.anamnesisId = anamnesisId || patient.anamnesisId
+            patient.active = active || patient.active
+
+            await patient.save()
+            return res.status(200).json({ message: "Patient updated successfully!" })
+        } catch (error: any) {
+            console.error(error.message);
+            return res.status(500).json({ message: "Internal server error!" })
+        }
+    }
+
 }

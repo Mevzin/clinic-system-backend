@@ -8,5 +8,6 @@ const patientController = new PatientController()
 
 patientRoutes.post('/createPatient', authMiddleware, patientController.createPatient)
 patientRoutes.get('/getPatientsByDoctorId/:doctorId', authMiddleware, patientController.getPatientsByDoctorId)
+patientRoutes.patch('/updatePatient/:patientId', authMiddleware, patientController.updatePatient)
 
 export { patientRoutes }
