@@ -7,7 +7,7 @@ export class PatientController {
     async createPatient(req: Request, res: Response) {
         const { name, email, age, anamnesisId, active, doctorId } = req.body;
         if (!name || !email || !doctorId || !age) return res.status(401).json({ message: "Unauthorized" })
-        if (doctorId.length < 24 || doctorId.length > 24) return res.status(404).json({ message: "Invalid doctor id!" })
+        if (doctorId.length != 24) return res.status(404).json({ message: "Invalid doctor id!" })
 
         try {
             const doctor = await User.findOne({ _id: doctorId })
