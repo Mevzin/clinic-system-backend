@@ -36,7 +36,7 @@ export class PatientController {
 
     async getPatientsByDoctorId(req: Request, res: Response) {
         const { doctorId } = req.params;
-        if (doctorId.length < 24 || doctorId.length > 24) return res.status(404).json({ message: "Invalid doctor id!" })
+        if (doctorId.length != 24) return res.status(404).json({ message: "Invalid doctor id!" })
 
         try {
             const doctor = await User.findOne({ _id: doctorId })
@@ -54,7 +54,7 @@ export class PatientController {
         const { patientId } = req.params;
         const { name, email, age, anamnesisId, active } = req.body;
 
-        if (patientId.length > 24 || patientId.length < 24) return res.status(404).json({ message: "Invalid patient ID!" })
+        if (patientId.length != 24) return res.status(404).json({ message: "Invalid patient ID!" })
 
         try {
             const patient = await Patient.findOne({ _id: patientId })
@@ -74,4 +74,18 @@ export class PatientController {
         }
     }
 
+    async deletePatient(req: Request, res: Response) {
+        const { patientId } = req.params;
+        if (patientId.length != 24) return res.status(404).json({ message: "Invalid patient ID!" })
+
+        try {
+            const patient = await Patient.findOneAndDelete({ _id: patientId })
+            if (!patient) return res.status(404).json({ message: "Patient not found!" })
+
+            return res.status(200).json({ message: "Patient deleted successfully" })
+        } catch (error: any) {
+            console.error(error.message);
+            return res.status(500).json({ message: "Internal server error!" })
+        }
+    }
 }
