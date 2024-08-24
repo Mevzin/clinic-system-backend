@@ -20,6 +20,33 @@ export class UserController {
         }
     }
 
+    async updateUser(req: Request, res: Response) {
+        const { name, password, photoUrl } = req.body;
+        const { userId } = req.params;
+        if (userId.length != 24) return res.status(400).json({ message: "Invalid user ID!" })
+
+        try {
+            const user = await User.findById({ _id: userId })
+            if (!user) return res.status(404).json({ message: "User not found!" })
+
+            if (password) {
+                const salt = Number(process.env.SALT)
+                const hashedPassword = await bcrypt.hash(password, salt)
+
+                user.password = hashedPassword;
+            }
+
+            user.name = name || user.name;
+            user.photoUrl = photoUrl || user.photoUrl;
+
+            await user.save();
+            return res.status(200).json({ message: "User updated successfully!" });
+        } catch (error: any) {
+            console.error(error.message);
+            return res.status(500).json({ message: "Internal server error!" })
+        }
+    }
+
     async login(req: Request, res: Response) {
         try {
             const { email, password } = req.body;
