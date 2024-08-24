@@ -35,8 +35,8 @@ Desenvolvido por [Thiago Torres](https://github.com/mevzin)
 ##### Usuario
 [x] - Usuario deve ser cadastrado como medico com validação de email, senha e nome.</br>
 [x] - Usuario deve conseguir cadastrar um paciente.</br>
-[-] - Usuario deve conseguir deletar um paciente.</br>
-[-] - Usuario deve conseguir atualizar os dados de um paciente.</br>
+[x] - Usuario deve conseguir deletar um paciente.</br>
+[x] - Usuario deve conseguir atualizar os dados de um paciente.</br>
 [-] - Usuario deve criar um agendamento para um paciente.</br>
 [-] - Usuario deve mudar os status de um agendamento de um paciente.</br>
 
