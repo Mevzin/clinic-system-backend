@@ -32,7 +32,7 @@ Desenvolvido por [Thiago Torres](https://github.com/mevzin)
     yarn start
 
 #### Requisitos
-##### Usuario
+##### Usuario [4/6]
 [x] - Usuario deve ser cadastrado como medico com validação de email, senha e nome.</br>
 [x] - Usuario deve conseguir cadastrar um paciente.</br>
 [x] - Usuario deve conseguir deletar um paciente.</br>
@@ -40,12 +40,12 @@ Desenvolvido por [Thiago Torres](https://github.com/mevzin)
 [-] - Usuario deve criar um agendamento para um paciente.</br>
 [-] - Usuario deve mudar os status de um agendamento de um paciente.</br>
 
-##### Agendamento
+##### Agendamento [0/2]
 
 [-] - Um agendamento só pode ser criado para o dia seguinte.</br>
 [-] - Um agendamento deve atualizar para "Invalido" no seus status apos passar da data marcada.</br>
 
-##### Consultas
+##### Consultas [0/4]
 
 [-] - Uma consulta deve ser gerada de um agendamento.</br>
 [-] - Uma consulta deve possuir todos os dados do medico e do paciente.</br>
