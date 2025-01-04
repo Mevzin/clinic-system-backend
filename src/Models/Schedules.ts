@@ -11,11 +11,11 @@ interface ISchedule extends Document {
 
 const ScheduleSchema: Schema = new Schema(
     {
-        date: { type: String, required: true, unique: true },
-        consultId: { type: String, default: "" },
-        patientId: { type: Schema.Types.ObjectId, required: true },
-        doctorId: { type: Schema.Types.ObjectId, required: true },
-        hasConfirm: { type: Boolean, default: true },
+        date: { type: String, required: true },
+        consultId: { type: Schema.Types.ObjectId, default: null },
+        patientId: { type: Schema.Types.ObjectId, required: true, ref: 'Patient' },
+        doctorId: { type: Schema.Types.ObjectId, required: true, ref: 'User' },
+        hasConfirm: { type: Boolean, default: false },
     },
     {
         timestamps: true,
